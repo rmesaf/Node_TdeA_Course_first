@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index --help"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/rmesaf/Node_TdeA_Course_first#readme",
   "dependencies": {
-    "nodemon": "^1.19.0"
+    "yargs": "^13.2.4"
   }
 }
