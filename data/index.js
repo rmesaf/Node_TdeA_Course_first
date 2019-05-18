@@ -1,4 +1,5 @@
-const { printHeader } = require ('../ui');
+const { printHeader, printCell } = require ('../ui');
+const { enrollment } = require ('../utils');
 const continuousEducation = {
     courses: [
         {
@@ -37,6 +38,7 @@ const continuousEducation = {
         this.courses.map( (course, index) =>
             setTimeout(() => {
                 this.printCourse(course);
+                printCell();
             }, 2000 * index)
         );
     },
@@ -44,15 +46,23 @@ const continuousEducation = {
         try {
             const [first, rest] = this.courses.filter( course => course.id === courseId);
             if (!first) throw "Course unavailable. Please try again.";
-            return this.printCourse(first);
+            this.printCourse(first);
+            return first;
         } catch(err){
             console.log(err);
         }
     },
     printCourse: function(course){
         console.log(`${course.id}. ${course.name}. Duration: ${course.duration}. Cost: ${course.cost}`);
+    },
+    subscribeStudent: function(info){
+        try{
+            const { i: courseId, n: studentName, d: studentDocumentNumber } = info;
+            const course = this.getCourse(courseId);
+            if(!course) throw ''
+            enrollment({course, studentName, studentDocumentNumber});
+        }catch (err) {}
     }
-
 }
 
 module.exports = {

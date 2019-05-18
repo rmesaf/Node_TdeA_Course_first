@@ -24,4 +24,5 @@ const subscribeCourseOptions = {
 
 module.exports = {
     courseOptions,
+    subscribeCourseOptions,
 };
